@@ -19,6 +19,22 @@ public class GameManager : MonoBehaviour
         
     }
 
+    public void ChangeScene(string sceneName)
+    {
+        SceneManager.LoadScene(sceneName);
+    }
+
+    public void QuitGame()
+    {
+        // Cierra el juego en una build
+        Application.Quit();
+
+        // Para que funcione en el editor de Unity
+#if UNITY_EDITOR
+        UnityEditor.EditorApplication.isPlaying = false;
+#endif
+    }
+
     public void GameOver()
     {
         gameoverCanvas.SetActive(true);
